@@ -206,7 +206,13 @@ function renderHistory(){
 }
 function clearHistory(){if(confirm("Verlauf wirklich löschen?")){history=[];save();renderHistory()}}
 openView("home");
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));}
+if("serviceWorker" in navigator){
+  window.addEventListener("load", async ()=>{
+    try{
+      await navigator.serviceWorker.register("./sw.js?V11");
+    }catch(e){}
+  });
+}
 </script>
 </body>
 </html>
