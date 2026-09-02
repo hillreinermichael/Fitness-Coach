@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1769aa">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fitness Coach">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
 <meta name="theme-color" content="#202124">
 <title>Fitness Training</title>
 <style>
@@ -41,13 +49,15 @@ label{font-size:12px;color:var(--muted);font-weight:700}input{width:100%;font-si
 .hidden{display:none}.danger{background:#fff1f1;color:#a00;border:1px solid #eccaca}
 .history div{padding:8px 0}.history hr{border:0;border-top:1px solid #e5ebf0}
 @media(max-width:420px){main{padding-left:9px;padding-right:9px}.card{padding:14px}.exercise{font-size:18px}}
+
+.brand{display:flex;align-items:center;gap:11px}.brand img{width:52px;height:52px;border-radius:12px;box-shadow:0 2px 7px #0003}.brand h1{margin-bottom:2px}
 </style>
 </head>
 <body>
 <header>
   <h1>FITNESS COACH</h1>
   <small id="subtitle">Startseite</small>
-</header>
+</div></div></header>
 
 <main>
   <section id="home">
@@ -174,6 +184,7 @@ function renderHistory(){
 }
 function clearHistory(){if(confirm("Verlauf wirklich löschen?")){history=[];save();renderHistory()}}
 openView("home");
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));}
 </script>
 </body>
 </html>
