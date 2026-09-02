@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#202124">
+<title>Fitness Training</title>
+<style>
+*{box-sizing:border-box}
+:root{--blue:#1769aa;--blue2:#0d4f86;--light:#eef5fb;--line:#d7e2ec;--text:#18232d;--muted:#667684}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#eaf3fb 0,#f5f7f9 300px);color:var(--text)}
+header{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:18px 16px 20px;box-shadow:0 3px 12px #0002;position:sticky;top:0;z-index:5}
+header h1{font-size:23px;letter-spacing:.4px;margin:0 0 4px;font-weight:800}header small{opacity:.85}
+main{max-width:680px;margin:auto;padding:15px 12px 40px}
+button{border:0;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:700;cursor:pointer}
+.home-grid{display:grid;gap:14px;margin-top:5px}
+.home-card{background:#fff;border:1px solid var(--line);padding:22px 18px;text-align:left;box-shadow:0 4px 14px #16344d14;min-height:125px;color:var(--text)}
+.home-card:active{transform:scale(.99)}
+.home-icon{width:45px;height:45px;border-radius:12px;background:var(--light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:12px}
+.home-title{font-size:19px;font-weight:800;color:var(--blue2)}
+.home-text{font-size:14px;color:var(--muted);margin-top:5px;font-weight:500}
+.nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
+.nav button{background:#fff;color:var(--blue2);border:2px solid var(--line);box-shadow:0 2px 7px #0000000d}
+.nav button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.back{background:#fff;color:var(--blue2);border:1px solid var(--line);margin-bottom:5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:11px 0;box-shadow:0 3px 12px #16344d12}
+.card.done{border-color:#9fc5e5;background:#f7fbff}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.exercise{font-size:19px;font-weight:800;color:var(--blue2)}.target{color:var(--muted);font-size:14px;margin-top:5px}
+.check{background:#e7eef4;color:var(--blue2);border-radius:50%;width:43px;height:43px;padding:0;font-size:21px}
+.check.on{background:var(--blue);color:white}
+.progress{font-size:14px;margin:12px 0 6px;color:#4b5d6b;font-weight:700}.bar{height:9px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
+.setbtn{width:100%;background:var(--blue);color:#fff;margin-top:10px;box-shadow:0 2px 7px #1769aa33}
+.settings-note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--muted);font-size:14px;margin-bottom:12px}
+.setting-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:9px 0;box-shadow:0 2px 8px #0000000b}
+.setting-name{font-size:17px;font-weight:800;color:var(--blue2);margin-bottom:9px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:12px;color:var(--muted);font-weight:700}input{width:100%;font-size:17px;padding:10px;border:1px solid #c7d4df;border-radius:10px;margin-top:4px;background:#fbfdff}
+.save-setting{margin-top:10px;background:var(--blue);color:#fff;width:100%}
+.sectiontitle{font-size:21px;font-weight:800;color:var(--blue2);margin:8px 0}
+.hidden{display:none}.danger{background:#fff1f1;color:#a00;border:1px solid #eccaca}
+.history div{padding:8px 0}.history hr{border:0;border-top:1px solid #e5ebf0}
+@media(max-width:420px){main{padding-left:9px;padding-right:9px}.card{padding:14px}.exercise{font-size:18px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>FITNESS COACH</h1>
+  <small id="subtitle">Startseite</small>
+</header>
+
+<main>
+  <section id="home">
+    <div class="home-grid">
+      <button class="home-card" onclick="openView('checklist')">
+        <div class="home-icon">✓</div>
+        <div class="home-title">TRAINING</div>
+        <div class="home-text">Plan auswählen und Übungen abhaken</div>
+      </button>
+      <button class="home-card" onclick="openView('settings')">
+        <div class="home-icon">⚙</div>
+        <div class="home-title">EINSTELLUNGEN</div>
+        <div class="home-text">Gewicht, Wert und Wiederholungen festlegen</div>
+      </button>
+      <button class="home-card" onclick="openView('history')">
+        <div class="home-icon">↗</div>
+        <div class="home-title">VERLAUF</div>
+        <div class="home-text">Vergangene Trainings und Leistungen</div>
+      </button>
+    </div>
+  </section>
+
+  <section id="checklist" class="view hidden">
+    <button class="back" onclick="openView('home')">← Startseite</button>
+    <div class="nav">
+      <button id="planA" class="active" onclick="showPlan('A')">PLAN 1A</button>
+      <button id="planB" onclick="showPlan('B')">PLAN 1B</button>
+    </div>
+    <div id="training"></div>
+  </section>
+
+  <section id="settings" class="view hidden">
+    <button class="back" onclick="openView('home')">← Startseite</button>
+    <div class="sectiontitle">Gewicht / Wert & Wiederholungen</div>
+    <div class="settings-note">Hier werden die Vorgabewerte geändert. Die Checkliste bleibt dadurch übersichtlich.</div>
+    <div class="nav">
+      <button id="settingsA" class="active" onclick="showSettings('A')">PLAN 1A</button>
+      <button id="settingsB" onclick="showSettings('B')">PLAN 1B</button>
+    </div>
+    <div id="settingsContent"></div>
+  </section>
+
+  <section id="history" class="view hidden">
+    <button class="back" onclick="openView('home')">← Startseite</button>
+    <div class="sectiontitle">Trainingsverlauf</div>
+    <div id="historyContent" class="card history"></div>
+    <button class="danger" onclick="clearHistory()">Verlauf löschen</button>
+  </section>
+</main>
+<script>
+const plans={
+A:[
+["Fahrrad",21,"Min.",1,1],["Hammer-Curl",10,"kg",12,4],["Dips",1,"",12,4],["Scottcurl",60,"kg",8,4],
+["Trizeps",35,"kg",8,4],["Schulter",50,"kg",10,4],["Seitheben",22.5,"kg",8,4],["Reverse Butterfly",55,"kg",8,4],
+["Beinpresse",144,"kg","8–12",4],["Beinstrecker",80,"kg",8,4],["Beinbeuger",70,"kg",8,4],
+["Gluteus","MAX","",12,4],["Waden",60,"kg",8,4],["Bizeps sitzend",7,"kg",10,4],["Ausdauer",21,"Min.",1,1]
+],
+B:[
+["Fahrrad",21,"Min.",1,1],["Lat-Zug",50,"kg","8–12",4],["Ruder Zug",45,"kg","8–12",4],["Bankdrücken",50,"kg",8,4],
+["Butterfly",35,"kg",8,4],["Adduktoren",118,"kg","8–12",4],["Adduktoren",118,"kg","8–12",4],
+["Kreuzheben",50,"kg",8,4],["Situps",20,"",20,4],["Gluteus","MAX","",12,4],["Bauch",70,"kg",8,4],["Ausdauer",21,"Min.",1,1]
+]};
+let current="A", settingsPlan="A";
+let state=JSON.parse(localStorage.getItem("fitnessState")||"{}");
+let settings=JSON.parse(localStorage.getItem("fitnessSettings")||"{}");
+let history=JSON.parse(localStorage.getItem("fitnessHistory")||"[]");
+function key(p,i){return p+"_"+i}
+function save(){localStorage.setItem("fitnessState",JSON.stringify(state));localStorage.setItem("fitnessSettings",JSON.stringify(settings));localStorage.setItem("fitnessHistory",JSON.stringify(history))}
+function openView(v){
+ document.querySelectorAll(".view").forEach(x=>x.classList.add("hidden"));
+ document.getElementById("home").classList.toggle("hidden",v!=="home");
+ if(v!=="home")document.getElementById(v).classList.remove("hidden");
+ document.getElementById("subtitle").textContent=v==="home"?"Startseite":v==="checklist"?"Training":v==="settings"?"Einstellungen":"Verlauf";
+ if(v==="checklist")render(); if(v==="settings")renderSettings(); if(v==="history")renderHistory();
+}
+function showPlan(p){current=p;document.getElementById("planA").classList.toggle("active",p==="A");document.getElementById("planB").classList.toggle("active",p==="B");render()}
+function render(){
+ const el=document.getElementById("training");el.innerHTML="";
+ plans[current].forEach((ex,i)=>{
+  const [name,defW,unit,reps,total]=ex,k=key(current,i);
+  const cfg=settings[k]||{w:defW,r:reps},s=state[k]||{sets:0,done:false};
+  const div=document.createElement("div");div.className="card"+(s.done?" done":"");
+  div.innerHTML=`<div class="row"><div><div class="exercise">${name}</div><div class="target">${cfg.w}${unit?" "+unit:""} · ${cfg.r}${unit==="Min."?" Min.":" Wdh."}</div></div>
+  <button class="check ${s.done?"on":""}" onclick="toggleDone(${i})">${s.done?"✓":"○"}</button></div>
+  <div class="progress">${s.sets}/${total} ${total===1?"Satz":"Sätze"}</div>
+  <div class="bar"><div class="fill" style="width:${Math.min(s.sets,total)*(100/total)}%"></div></div>
+  <button class="setbtn" onclick="addSet(${i})">${s.sets<total?"+ SATZ GEMACHT":total+" "+(total===1?"SATZ ABGESCHLOSSEN":"SÄTZE ABGESCHLOSSEN")}</button>`;
+  el.appendChild(div);
+ });
+}
+function addSet(i){
+ const ex=plans[current][i],k=key(current,i),total=ex[4],cfg=settings[k]||{w:ex[1],r:ex[3]};
+ const s=state[k]||{sets:0,done:false};
+ if(s.sets<total)s.sets++;if(s.sets===total)s.done=true;state[k]=s;
+ if(s.sets===total)history.unshift({date:new Date().toLocaleString("de-DE"),plan:"1"+current,exercise:ex[0],weight:cfg.w,reps:cfg.r});
+ save();render();
+}
+function toggleDone(i){
+ const ex=plans[current][i],k=key(current,i),s=state[k]||{sets:0,done:false};
+ s.done=!s.done;if(s.done)s.sets=ex[4];state[k]=s;save();render();
+}
+function showSettings(p){
+ settingsPlan=p;document.getElementById("settingsA").classList.toggle("active",p==="A");document.getElementById("settingsB").classList.toggle("active",p==="B");renderSettings();
+}
+function renderSettings(){
+ const el=document.getElementById("settingsContent");el.innerHTML="";
+ plans[settingsPlan].forEach((ex,i)=>{
+  const k=key(settingsPlan,i),cfg=settings[k]||{w:ex[1],r:ex[3]},div=document.createElement("div");
+  div.className="setting-card";
+  div.innerHTML=`<div class="setting-name">${ex[0]}</div><div class="inputs">
+  <div><label>Gewicht / Wert${ex[2]?" ("+ex[2]+")":""}</label><input id="sw${i}" value="${cfg.w}" inputmode="decimal"></div>
+  <div><label>${ex[2]==="Min."?"Zeit":"Wiederholungen"}</label><input id="sr${i}" value="${cfg.r}" inputmode="decimal"></div></div>
+  <button class="save-setting" onclick="saveSetting(${i})">SPEICHERN</button>`;
+  el.appendChild(div);
+ });
+}
+function saveSetting(i){
+ const ex=plans[settingsPlan][i];settings[key(settingsPlan,i)]={w:document.getElementById("sw"+i).value,r:document.getElementById("sr"+i).value};save();renderSettings();
+}
+function renderHistory(){
+ const el=document.getElementById("historyContent");
+ if(!history.length){el.innerHTML='<span class="muted">Noch kein abgeschlossener Satzblock.</span>';return}
+ el.innerHTML=history.slice(0,150).map(x=>`<div><b>${x.date}</b> · Plan ${x.plan}<br>${x.exercise}: ${x.weight}${x.weight?" × ":""}${x.reps}</div><hr>`).join("");
+}
+function clearHistory(){if(confirm("Verlauf wirklich löschen?")){history=[];save();renderHistory()}}
+openView("home");
+</script>
+</body>
+</html>
