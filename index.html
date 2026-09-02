@@ -15,49 +15,38 @@
 <title>Fitness Training</title>
 <style>
 *{box-sizing:border-box}
-:root{--blue:#1769aa;--blue2:#0d4f86;--light:#eef5fb;--line:#d7e2ec;--text:#18232d;--muted:#667684}
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#eaf3fb 0,#f5f7f9 300px);color:var(--text)}
-header{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:18px 16px 20px;box-shadow:0 3px 12px #0002;position:sticky;top:0;z-index:5}
-header h1{font-size:23px;letter-spacing:.4px;margin:0 0 4px;font-weight:800}header small{opacity:.85}
-main{max-width:680px;margin:auto;padding:15px 12px 40px}
-button{border:0;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:700;cursor:pointer}
-.home-grid{display:grid;gap:14px;margin-top:5px}
-.home-card{background:#fff;border:1px solid var(--line);padding:22px 18px;text-align:left;box-shadow:0 4px 14px #16344d14;min-height:125px;color:var(--text)}
-.home-card:active{transform:scale(.99)}
-.home-icon{width:45px;height:45px;border-radius:12px;background:var(--light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:12px}
-.home-title{font-size:19px;font-weight:800;color:var(--blue2)}
-.home-text{font-size:14px;color:var(--muted);margin-top:5px;font-weight:500}
-.nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
-.nav button{background:#fff;color:var(--blue2);border:2px solid var(--line);box-shadow:0 2px 7px #0000000d}
-.nav button.active{background:var(--blue);border-color:var(--blue);color:#fff}
-.back{background:#fff;color:var(--blue2);border:1px solid var(--line);margin-bottom:5px}
-.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin:7px 0;box-shadow:0 2px 8px #16344d10}
-.card.done{border-color:#9fc5e5;background:#f7fbff}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.exercise{font-size:16px;font-weight:800;color:var(--blue2);line-height:1.2;white-space:nowrap}.exercise-target{font-size:13px;font-weight:600;color:var(--muted);margin-left:4px}
-.check{background:#e7eef4;color:var(--blue2);border-radius:50%;width:34px;height:34px;padding:0;font-size:18px}
-.check.on{background:var(--blue);color:white}
-.set-row{display:flex;align-items:center;gap:7px;margin-top:6px}.set-info{flex:1;min-width:0}.progress{font-size:12px;margin:0 0 4px;color:#4b5d6b;font-weight:700}.bar{height:6px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
-.setbtn{width:32px;min-width:32px;height:32px;flex:0 0 32px;background:var(--blue);color:#fff;margin-top:0;box-shadow:0 2px 7px #1769aa33;padding:0;font-size:22px;line-height:1}
-.settings-note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--muted);font-size:14px;margin-bottom:12px}
-.setting-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:7px 0;box-shadow:0 2px 7px #0000000b}
-.setting-name{font-size:17px;font-weight:800;color:var(--blue2);margin-bottom:9px}
-.inputs{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-label{font-size:12px;color:var(--muted);font-weight:700}input{width:100%;font-size:17px;padding:10px;border:1px solid #c7d4df;border-radius:10px;margin-top:4px;background:#fbfdff}
-.save-setting{margin-top:10px;background:var(--blue);color:#fff;width:100%}
-.sectiontitle{font-size:21px;font-weight:800;color:var(--blue2);margin:8px 0}
-.hidden{display:none}.danger{background:#fff1f1;color:#a00;border:1px solid #eccaca}
-.history div{padding:8px 0}.history hr{border:0;border-top:1px solid #e5ebf0}
-@media(max-width:420px){main{padding-left:8px;padding-right:8px}.card{padding:9px 10px}.exercise{font-size:15px}.exercise-target{font-size:12px}.check{width:32px;height:32px}}
-
-.brand{display:flex;align-items:center;gap:11px}.brand img{width:52px;height:52px;border-radius:12px;box-shadow:0 2px 7px #0003}.brand h1{margin-bottom:2px}
-.reset-all{width:100%;background:#fff;color:var(--blue2);border:1px solid #b9ccdc;margin:0 0 10px;font-size:14px}
-.reset-one{width:32px;min-width:32px;height:32px;background:#f3f7fa;color:#5b6c79;border:1px solid #d6e0e7;padding:0;font-size:18px;line-height:1}
+:root{--blue-dark:#123b63;--blue:#1976b9;--blue-soft:#eaf4fb;--blue-border:#b9d4e8;--surface:#fff;--text:#18232d;--muted:#6a7a88;--line:#d7e2eb}
+body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#eaf1f6}
+header{background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:#fff;padding:13px 14px;box-shadow:0 3px 10px #001b2d2e;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:45px;height:45px;border-radius:11px;box-shadow:0 1px 5px #0004}.brand h1{font-size:20px;letter-spacing:.3px;margin:0 0 2px;font-weight:800}.brand small{opacity:.9}
+main{max-width:700px;margin:auto;padding:11px 10px 32px}
+button{font-family:inherit;border-radius:10px;cursor:pointer;font-weight:800}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+.home-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px;min-height:118px;text-align:left;color:var(--text);box-shadow:0 3px 9px #0d29400f}
+.home-card:first-child{grid-column:span 2;min-height:100px}
+.home-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--blue-soft);color:var(--blue);font-size:21px;margin-bottom:9px}
+.home-title{font-size:17px;color:var(--blue-dark);font-weight:900}.home-text{font-size:12px;line-height:1.35;color:var(--muted);margin-top:4px}
+.nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0 10px}.nav button{padding:10px 12px;background:#fff;color:var(--blue-dark);border:2px solid var(--blue-border);box-shadow:0 2px 6px #0d29400c}.nav button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.back{padding:8px 11px;background:#fff;color:var(--blue-dark);border:1px solid var(--blue-border);font-size:13px;margin-bottom:3px}
+.sectiontitle{font-size:18px;font-weight:900;color:var(--blue-dark);margin:5px 0 7px}.settings-note{background:var(--blue-soft);border:1px solid var(--blue-border);color:#466171;border-radius:10px;padding:9px 10px;font-size:12px;margin-bottom:8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 10px;margin:6px 0;box-shadow:0 2px 7px #0d29400d}.card.done{background:#f4fbff;border-color:#a8c9df}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.exercise{font-size:15px;font-weight:900;color:var(--blue-dark);line-height:1.2;white-space:nowrap}.exercise-target{font-size:12px;font-weight:700;color:var(--muted);margin-left:3px}
+.check{flex:0 0 31px;width:31px;height:31px;border-radius:50%;border:1px solid var(--blue-border);background:#edf3f7;color:var(--blue-dark);padding:0;font-size:17px}.check.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.set-row{display:flex;align-items:center;gap:6px;margin-top:5px}.set-info{flex:1;min-width:0}.progress{font-size:11px;margin:0 0 3px;color:#4e6474;font-weight:800}.bar{height:5px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
+.setbtn{width:30px;min-width:30px;height:30px;flex:0 0 30px;padding:0;background:var(--blue);color:#fff;font-size:20px;line-height:1;border:1px solid var(--blue)}
+.reset-one{width:30px;min-width:30px;height:30px;background:#f2f6f9;color:#667784;border:1px solid var(--line);padding:0;font-size:17px;line-height:1}
+.reset-all{width:100%;padding:8px 10px;margin:0 0 8px;background:#fff;color:var(--blue-dark);border:1px solid var(--blue-border);font-size:12px}
+.setting-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0;box-shadow:0 2px 7px #0d29400b}.setting-name{font-size:15px;font-weight:900;color:var(--blue-dark);margin-bottom:7px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:7px}label{font-size:11px;color:var(--muted);font-weight:800}
+input{width:100%;font-size:16px;padding:8px;border:1px solid #c6d5df;border-radius:8px;margin-top:3px;background:#fcfdfe}.save-setting{margin-top:7px;background:var(--blue);color:#fff;width:100%;padding:8px;font-size:13px}
+.hidden{display:none}.danger{background:#fff1f1;color:#a00;border:1px solid #eccaca;padding:9px 11px;font-size:13px}.history div{padding:6px 0;font-size:12px}.history hr{border:0;border-top:1px solid #e5ebf0}
+@media(max-width:460px){main{padding-left:8px;padding-right:8px}.home-card{padding:13px}.exercise{font-size:14px}.exercise-target{font-size:11px}}
 </style>
 </head>
 <body>
 <header>
-  <h1>FITNESS COACH</h1>
+  <h1>FITNESS COACH V13</h1>
   <small id="subtitle">Startseite</small>
 </div></div></header>
 
