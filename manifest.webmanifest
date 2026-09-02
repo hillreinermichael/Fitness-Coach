@@ -1,7 +1,6 @@
 {
   "name": "Fitness Coach",
   "short_name": "Fitness Coach",
-  "description": "Lokale Fitness-Trainings-App",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

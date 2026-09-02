@@ -1,16 +1,15 @@
-Fitness Coach – Version 5
+Fitness Coach – Version 9
 
-PWA-Version mit dem gewählten Fitness-Coach-Logo.
+Neu:
+- Der Satz-Button zeigt jetzt nur noch „+“.
+- Der Zurücksetzen-Button der einzelnen Übung steht in derselben Zeile.
+- Reihenfolge: Satzanzahl/Balken → + → Zurücksetzen.
+- Beide Buttons sind kompakt und sparen Platz.
 
 Enthalten:
 - 3 Startseiten-Kacheln: Training, Einstellungen, Verlauf
 - Plan 1A / Plan 1B
-- Checkliste mit Satz-Zähler
 - Fahrrad und Ausdauer: 1 Satz
 - übrige Übungen: 4 Sätze
-- Gewicht/Wert und Wiederholungen/Zeit nur unter Einstellungen
-- lokale Speicherung
-- PWA-Manifest
-- Service Worker für Offline-Nutzung nach dem ersten Laden
-- Favicon und App-Symbole in mehreren Größen
-- Apple Touch Icon
+- einzelne Übung oder kompletter Plan zurücksetzen
+- PWA, Favicon, App-Symbole, lokale Speicherung
