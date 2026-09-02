@@ -31,28 +31,28 @@ button{border:0;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:
 .nav button{background:#fff;color:var(--blue2);border:2px solid var(--line);box-shadow:0 2px 7px #0000000d}
 .nav button.active{background:var(--blue);border-color:var(--blue);color:#fff}
 .back{background:#fff;color:var(--blue2);border:1px solid var(--line);margin-bottom:5px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:11px 0;box-shadow:0 3px 12px #16344d12}
+.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin:7px 0;box-shadow:0 2px 8px #16344d10}
 .card.done{border-color:#9fc5e5;background:#f7fbff}
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.exercise{font-size:19px;font-weight:800;color:var(--blue2)}.target{color:var(--muted);font-size:14px;margin-top:5px}
-.check{background:#e7eef4;color:var(--blue2);border-radius:50%;width:43px;height:43px;padding:0;font-size:21px}
+.exercise{font-size:16px;font-weight:800;color:var(--blue2);line-height:1.2;white-space:nowrap}.exercise-target{font-size:13px;font-weight:600;color:var(--muted);margin-left:4px}
+.check{background:#e7eef4;color:var(--blue2);border-radius:50%;width:34px;height:34px;padding:0;font-size:18px}
 .check.on{background:var(--blue);color:white}
-.set-row{display:flex;align-items:flex-end;gap:8px;margin-top:9px}.set-info{flex:1;min-width:0}.progress{font-size:13px;margin:0 0 5px;color:#4b5d6b;font-weight:700}.bar{height:8px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
-.setbtn{width:38px;min-width:38px;height:38px;flex:0 0 38px;background:var(--blue);color:#fff;margin-top:0;box-shadow:0 2px 7px #1769aa33;padding:0;font-size:22px;line-height:1}
+.set-row{display:flex;align-items:center;gap:7px;margin-top:6px}.set-info{flex:1;min-width:0}.progress{font-size:12px;margin:0 0 4px;color:#4b5d6b;font-weight:700}.bar{height:6px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
+.setbtn{width:32px;min-width:32px;height:32px;flex:0 0 32px;background:var(--blue);color:#fff;margin-top:0;box-shadow:0 2px 7px #1769aa33;padding:0;font-size:22px;line-height:1}
 .settings-note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--muted);font-size:14px;margin-bottom:12px}
-.setting-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:9px 0;box-shadow:0 2px 8px #0000000b}
+.setting-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:7px 0;box-shadow:0 2px 7px #0000000b}
 .setting-name{font-size:17px;font-weight:800;color:var(--blue2);margin-bottom:9px}
-.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 label{font-size:12px;color:var(--muted);font-weight:700}input{width:100%;font-size:17px;padding:10px;border:1px solid #c7d4df;border-radius:10px;margin-top:4px;background:#fbfdff}
 .save-setting{margin-top:10px;background:var(--blue);color:#fff;width:100%}
 .sectiontitle{font-size:21px;font-weight:800;color:var(--blue2);margin:8px 0}
 .hidden{display:none}.danger{background:#fff1f1;color:#a00;border:1px solid #eccaca}
 .history div{padding:8px 0}.history hr{border:0;border-top:1px solid #e5ebf0}
-@media(max-width:420px){main{padding-left:9px;padding-right:9px}.card{padding:14px}.exercise{font-size:18px}}
+@media(max-width:420px){main{padding-left:8px;padding-right:8px}.card{padding:9px 10px}.exercise{font-size:15px}.exercise-target{font-size:12px}.check{width:32px;height:32px}}
 
 .brand{display:flex;align-items:center;gap:11px}.brand img{width:52px;height:52px;border-radius:12px;box-shadow:0 2px 7px #0003}.brand h1{margin-bottom:2px}
 .reset-all{width:100%;background:#fff;color:var(--blue2);border:1px solid #b9ccdc;margin:0 0 10px;font-size:14px}
-.reset-one{width:38px;min-width:38px;height:38px;background:#f3f7fa;color:#5b6c79;border:1px solid #d6e0e7;padding:0;font-size:18px;line-height:1}
+.reset-one{width:32px;min-width:32px;height:32px;background:#f3f7fa;color:#5b6c79;border:1px solid #d6e0e7;padding:0;font-size:18px;line-height:1}
 </style>
 </head>
 <body>
@@ -143,7 +143,7 @@ function render(){
   const [name,defW,unit,reps,total]=ex,k=key(current,i);
   const cfg=settings[k]||{w:defW,r:reps},s=state[k]||{sets:0,done:false};
   const div=document.createElement("div");div.className="card"+(s.done?" done":"");
-  div.innerHTML=`<div class="row"><div><div class="exercise">${name}</div><div class="target">${cfg.w}${unit?" "+unit:""} · ${cfg.r}${unit==="Min."?" Min.":" Wdh."}</div></div>
+  div.innerHTML=`<div class="row"><div><div class="exercise">${name} <span class="exercise-target">(${cfg.w}${unit?" "+unit:""} · ${cfg.r}${unit==="Min."?" Min.":" Wdh."})</span></div></div>
   <button class="check ${s.done?"on":""}" onclick="toggleDone(${i})">${s.done?"✓":"○"}</button></div>
   <div class="set-row">
     <div class="set-info">
