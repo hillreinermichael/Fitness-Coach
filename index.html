@@ -37,7 +37,7 @@ button{font-family:inherit;border-radius:10px;cursor:pointer;font-weight:800}
 .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .exercise{font-size:15px;font-weight:900;color:var(--blue-dark);line-height:1.2;white-space:nowrap}.exercise-target{font-size:12px;font-weight:700;color:var(--muted);margin-left:3px}
 .check{flex:0 0 31px;width:31px;height:31px;border-radius:50%;border:1px solid var(--blue-border);background:#edf3f7;color:var(--blue-dark);padding:0;font-size:17px}.check.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.set-row{display:flex;align-items:center;gap:6px;margin-top:5px}.set-info{flex:1;min-width:0}.progress{font-size:11px;margin:0 0 3px;color:#4e6474;font-weight:800}.bar{height:5px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
+.set-row{display:flex;align-items:center;gap:6px;margin-top:5px}.set-info{flex:1;min-width:0}.exercise-mini-icon{width:30px;height:30px;object-fit:contain;border-radius:6px;background:#fff;border:1px solid var(--line);flex:0 0 30px}.progress{font-size:11px;margin:0 0 3px;color:#4e6474;font-weight:800}.bar{height:5px;background:#e7eef4;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:10px}
 .setbtn{width:30px;min-width:30px;height:30px;flex:0 0 30px;padding:0;background:var(--blue);color:#fff;font-size:20px;line-height:1;border:1px solid var(--blue)}
 .reset-one{width:30px;min-width:30px;height:30px;background:#f2f6f9;color:#667784;border:1px solid var(--line);padding:0;font-size:17px;line-height:1}
 .reset-all{width:100%;padding:8px 10px;margin:0 0 8px;background:#fff;color:var(--blue-dark);border:1px solid var(--blue-border);font-size:12px}
@@ -53,7 +53,7 @@ input{width:100%;font-size:16px;padding:8px;border:1px solid #c6d5df;border-radi
   <div class="header-brand">
     <img src="./icons/icon-96.png" class="header-logo" alt="">
     <div class="header-center">
-      <h1>FITNESS COACH V15</h1>
+      <h1>FITNESS COACH V16</h1>
       <small id="subtitle">Startseite</small>
     </div>
     <img src="./icons/icon-96.png" class="header-logo" alt="">
@@ -147,6 +147,7 @@ function render(){
   <div class="set-row">
     <div class="set-info">
       <div class="progress">${s.sets}/${total} ${total===1?"Satz":"Sätze"}</div>
+      <img class="exercise-mini-icon" src="./exercise-images/${current}_${String(i+1).padStart(2,"0")}.png" alt="">
       <div class="bar"><div class="fill" style="width:${Math.min(s.sets,total)*(100/total)}%"></div></div>
     </div>
     <button class="setbtn" onclick="addSet(${i})">${s.sets<total?"+":"✓"}</button>
