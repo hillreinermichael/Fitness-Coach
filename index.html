@@ -53,7 +53,7 @@ input{width:100%;font-size:16px;padding:8px;border:1px solid #c6d5df;border-radi
   <div class="header-brand">
     <img src="./icons/icon-96.png" class="header-logo" alt="">
     <div class="header-center">
-      <h1>FITNESS COACH V14</h1>
+      <h1>FITNESS COACH V15</h1>
       <small id="subtitle">Startseite</small>
     </div>
     <img src="./icons/icon-96.png" class="header-logo" alt="">
@@ -142,7 +142,7 @@ function render(){
   const [name,defW,unit,reps,total]=ex,k=key(current,i);
   const cfg=settings[k]||{w:defW,r:reps},s=state[k]||{sets:0,done:false};
   const div=document.createElement("div");div.className="card"+(s.done?" done":"");
-  div.innerHTML=`<div class="row"><div><div class="exercise">${name} <span class="exercise-target">(${cfg.w}${unit?" "+unit:""} · ${cfg.r}${unit==="Min."?" Min.":" Wdh."})</span></div></div>
+  div.innerHTML=`<div class="row"><div><div class="exercise">${name} <span class="exercise-target">(${unit==="Min."?cfg.w+" Min.":cfg.w+(unit?" "+unit:"")+" · "+cfg.r+" Wdh."})</span></div></div>
   <button class="check ${s.done?"on":""}" onclick="toggleDone(${i})">${s.done?"✓":"○"}</button></div>
   <div class="set-row">
     <div class="set-info">
